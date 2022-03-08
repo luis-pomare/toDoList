@@ -1,12 +1,26 @@
-import _ from "lodash";
 import "./style.css";
-function component() {
-  const element = document.createElement("div");
-
-  // Lodash, now imported by this script
-  element.innerHTML = _.join(["Hello", "webpack"], " ");
-  element.classList.add("hello");
-  return element;
+let list = [];
+class Item {
+  constructor(description, completed, index) {
+    this.description = description;
+    this.completed = completed;
+    this.index = index;
+  }
 }
 
-document.body.appendChild(component());
+const item1 = new Item("Init package.JSON", true, 0);
+const item2 = new Item("Install webpack", true, 1);
+const item3 = new Item("Install dependencies", true, 2);
+const item4 = new Item("Configure src files", false, 3);
+
+function addItem(item) {
+  let index = item.index;
+  list[index] = item;
+}
+
+addItem(item1);
+addItem(item2);
+addItem(item3);
+addItem(item4);
+
+console.log(list);
