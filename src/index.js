@@ -34,7 +34,6 @@ function renderList(list) {
     <p contenteditable="true">${list[i].description}</p>
     </span>
     <span id="menuContainer${list[i].index}">
-    <i class="fa-solid fa-grip-lines"></i>
     <i class="fa-solid fa-ellipsis-vertical" id="menuIcon${list[i].index}"></i>
     </span>
     `;
@@ -46,6 +45,7 @@ function renderList(list) {
     );
     menuIcon.addEventListener("click", () => {
       menuContainer.innerHTML = `
+      <i class="fa-solid fa-grip-lines"></i>
       <i class="fa-solid fa-trash-can"></i>
       <i class="fa-solid fa-pencil"></i>
       `;
