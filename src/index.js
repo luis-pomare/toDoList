@@ -33,13 +33,23 @@ function renderList(list) {
     <input type="checkbox">
     <p contenteditable="true">${list[i].description}</p>
     </span>
-    <span>
+    <span id="menuContainer${list[i].index}">
     <i class="fa-solid fa-grip-lines"></i>
     <i class="fa-solid fa-ellipsis-vertical" id="menuIcon${list[i].index}"></i>
     </span>
     `;
     li.classList.add("flexItem");
     ul.appendChild(li);
+    let menuIcon = document.getElementById(`menuIcon${list[i].index}`); // Current menu icon
+    let menuContainer = document.getElementById(
+      `menuContainer${list[i].index}`
+    );
+    menuIcon.addEventListener("click", () => {
+      menuContainer.innerHTML = `
+      <i class="fa-solid fa-trash-can"></i>
+      <i class="fa-solid fa-pencil"></i>
+      `;
+    });
   }
 }
 

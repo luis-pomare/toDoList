@@ -42,3 +42,13 @@ span {
   gap: 12px;
   align-content: center;
 }
+
+.fa-grip-lines {
+  cursor: grab;
+}
+
+.fa-ellipsis-vertical,
+.fa-trash-can,
+.fa-pencil {
+  cursor: pointer;
+}
