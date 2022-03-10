@@ -35,7 +35,7 @@ function renderList(list) {
     </span>
     <span>
     <i class="fa-solid fa-grip-lines"></i>
-    <i class="fa-solid fa-ellipsis-vertical"></i>
+    <i class="fa-solid fa-ellipsis-vertical" id="menuIcon${list[i].index}"></i>
     </span>
     `;
     li.classList.add("flexItem");
