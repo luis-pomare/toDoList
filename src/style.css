@@ -14,9 +14,9 @@ main {
 
 .flexItem {
   display: flex;
-  gap: 20px;
   padding: 15px;
   border: 0.5px solid #ddd;
+  justify-content: space-between;
 }
 
 #clearCompleted {
@@ -31,4 +31,14 @@ main {
   flex-direction: column;
   list-style-type: none;
   padding: 0;
+}
+
+.fa-solid {
+  color: black;
+}
+
+span {
+  display: flex;
+  gap: 12px;
+  align-content: center;
 }

@@ -29,8 +29,14 @@ function renderList(list) {
   for (let i = 0; i < list.length; i += 1) {
     const li = document.createElement("li");
     li.innerHTML = `
+    <span>
     <input type="checkbox">
     <p contenteditable="true">${list[i].description}</p>
+    </span>
+    <span>
+    <i class="fa-solid fa-grip-lines"></i>
+    <i class="fa-solid fa-ellipsis-vertical"></i>
+    </span>
     `;
     li.classList.add("flexItem");
     ul.appendChild(li);
