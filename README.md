@@ -1,72 +1,36 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# To-do list app
 
-> Description the project.
-
+> This browser app can help you to keep track of your daily tasks and don't worry about keeping open your browser because this app uses your local storage to keep all changes up to date.
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
+- HTML, css and Javascript
+- Webpack
 
-## Live Demo (if available)
+## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://luis-pomare.github.io/toDoList/)
 
+[<img src="app_screenshot.png">](https://luis-pomare.github.io/toDoList/)
 
 ## Getting Started
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-### Setup
-
-### Install
-
-### Usage
-
-### Run tests
-
-### Deployment
-
-
+You must add your pending tasks by typing them into the top-side text field. Once you click the add button you will see the added task in the list.
+You can mark a task as completed by checking its check box. If you want to delete all the completed tasks you can click the "Clear all completed" button at the bottom of the page or you can remove them one by one in the right-side menu.
 
 ## Authors
 
-👤 **Author1**
+👤 **Luis pomare**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-👤 **Author2**
-
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome!
-
-Feel free to check the [issues page](../../issues/).
+- GitHub: [@luis-pomare](https://github.com/luis-pomare)
+- Twitter: [@LuisPomare1](https://twitter.com/LuisPomare1)
+- LinkedIn: [luis-pomare-388116225](https://www.linkedin.com/in/luis-pomare-388116225/)
 
 ## Show your support
 
 Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
 
 ## 📝 License
 
