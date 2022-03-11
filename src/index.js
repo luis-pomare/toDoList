@@ -25,7 +25,7 @@ function renderList() {
     const li = document.createElement("li");
     li.innerHTML = `
     <span>
-    <input type="checkbox">
+    <input id="check${list[i].index}" type="checkbox">
     <p contenteditable="true">${list[i].description}</p>
     </span>
     <span id="menuContainer${list[i].index}">
@@ -49,6 +49,13 @@ function renderList() {
       let edit = document.getElementById(`edit${list[i].index}`);
       erase.addEventListener("click", () => {});
     });
+    let check = document.getElementById(`check${list[i].index}`);
+    check.checked = list[i].completed;
+    check.addEventListener("click", () => {
+      list[list[i].index].completed = check.checked;
+      localStorage.setItem("listArray", JSON.stringify(list));
+      console.log(list);
+    });
   }
 }
 
@@ -67,3 +74,4 @@ enterIcon.addEventListener("click", () => {
 });
 
 renderList();
+console.log(list);
