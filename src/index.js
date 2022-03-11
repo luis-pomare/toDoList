@@ -12,10 +12,9 @@ if (JSON.parse(localStorage.getItem("listArray")) !== null) {
 }
 
 class Item {
-  constructor(description, completed, index) {
+  constructor(description, completed) {
     this.description = description;
     this.completed = completed;
-    this.index = index;
   }
 }
 
@@ -24,9 +23,8 @@ function clearInput() {
   taskInput.value = "";
 }
 
-enterIcon.addEventListener("click", () => {
-  if (taskInput.value !== "") {
-    const element = `
+function renderElement() {
+  const element = `
       <li class="flexItem">
         <span>
           <input type="checkbox" class="checkbox" />
@@ -37,6 +35,19 @@ enterIcon.addEventListener("click", () => {
         </span>
       </li>      
     `;
-    ul.innerHTML += element;
+  ul.innerHTML += element;
+}
+
+function storageElement() {
+  const element = new Item(taskInput.value, false);
+  list.push(element);
+  localStorage.setItem("listArray", JSON.stringify(list));
+}
+
+enterIcon.addEventListener("click", () => {
+  if (taskInput.value !== "") {
+    renderElement();
+    storageElement();
+    clearInput();
   }
 });
