@@ -47,8 +47,32 @@ span {
   cursor: grab;
 }
 
+.fa-grip-lines:active {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+
 .fa-ellipsis-vertical,
 .fa-trash-can,
 .fa-pencil {
   cursor: pointer;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+#taskInput {
+  height: 40px;
+  width: 95%;
+}
+
+#inputContainer {
+  padding: 0;
+  align-items: center;
+}
+
+.fa-check {
+  cursor: pointer;
+  padding-left: 2%;
+  padding-right: 3%;
 }

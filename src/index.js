@@ -1,6 +1,14 @@
 import "./style.css";
 
 const list = [];
+let counter = 0;
+let taskInput = document.getElementById("taskInput");
+
+if (JSON.parse(localStorage.getItem("listArray")) !== null) {
+  list = JSON.parse(localStorage.getItem("listArray"));
+  counter = list.length;
+}
+
 const ul = document.getElementById("listContainer");
 class Item {
   constructor(description, completed, index) {
@@ -10,10 +18,10 @@ class Item {
   }
 }
 
-const item1 = new Item("Init package.JSON", true, 3);
-const item2 = new Item("Install webpack", true, 1);
-const item3 = new Item("Install dependencies", true, 2);
-const item4 = new Item("Configure src files", false, 0);
+const item1 = new Item("Init package.JSON", false, 0);
+const item2 = new Item("Install webpack", false, 1);
+const item3 = new Item("Install dependencies", false, 2);
+const item4 = new Item("Configure src files", false, 3);
 
 function addItem(item) {
   const { index } = item;
@@ -45,12 +53,24 @@ function renderList(list) {
     );
     menuIcon.addEventListener("click", () => {
       menuContainer.innerHTML = `
-      <i class="fa-solid fa-grip-lines"></i>
-      <i class="fa-solid fa-trash-can"></i>
-      <i class="fa-solid fa-pencil"></i>
+      <i id="drag${list[i].index}" class="fa-solid fa-grip-lines"></i>
+      <i id="erase${list[i].index}" class="fa-solid fa-trash-can"></i>
+      <i id="edit${list[i].index}" class="fa-solid fa-pencil"></i>
       `;
+      let drag = document.getElementById(`drag${list[i].index}`);
+      let erase = document.getElementById(`erase${list[i].index}`);
+      let edit = document.getElementById(`edit${list[i].index}`);
+      erase.addEventListener("click", () => {});
     });
   }
 }
+
+// addButton.addEventListener("click", () => {
+//   if (bookInput.value !== "" && authorInput.value !== "") {
+//     newBook();
+//     renderCollection();
+//     clearInputs();
+//   }
+// });
 
 renderList(list);

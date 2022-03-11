@@ -12,7 +12,10 @@
   <body>
     <main>
       <p class="flexItem">Today's to do</p>
-      <input type="text" placeholder="Add to your list" class="flexItem" />
+      <span id="inputContainer" class="flexItem">
+        <input id="taskInput" type="text" placeholder="Add to your list" />
+        <i class="fa-solid fa-check"></i>
+      </span>
       <ul id="listContainer"></ul>
       <p id="clearCompleted">Clear all completed</p>
     </main>
