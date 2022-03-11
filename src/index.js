@@ -2,7 +2,7 @@ import "./style.css";
 
 const taskInput = document.getElementById("taskInput");
 const enterIcon = document.getElementById("enterIcon");
-const ul = document.getElementById("listContainer");
+let ul = document.getElementById("listContainer");
 const clearCompletedButton = document.getElementById("clearCompleted");
 
 let list = [];
@@ -27,9 +27,16 @@ function clearInput() {
 enterIcon.addEventListener("click", () => {
   if (taskInput.value !== "") {
     const element = `
-      <li>
-        <input type="checkbox" class="checkbox">
-      </li>
+      <li class="flexItem">
+        <span>
+          <input type="checkbox" class="checkbox" />
+          <p contenteditable="true">${taskInput.value}</p>
+        </span>
+        <span>
+          <i class="fa-solid fa-ellipsis-vertical"></i>
+        </span>
+      </li>      
     `;
+    ul.innerHTML += element;
   }
 });
