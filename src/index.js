@@ -2,6 +2,7 @@ import "./style.css";
 let taskInput = document.getElementById("taskInput");
 const enterIcon = document.getElementById("enterIcon");
 const ul = document.getElementById("listContainer");
+const clearCompletedButton = document.getElementById("clearCompleted");
 
 let list = [];
 let counter = 0;
@@ -82,6 +83,20 @@ enterIcon.addEventListener("click", () => {
     renderList();
     clearInput();
   }
+});
+
+function clearCompleted() {
+  list = list.filter((item) => item.completed === false);
+  counter = list.length;
+  for (let i = 0; i < counter; i += 1) {
+    list[i].index = i;
+  }
+  localStorage.setItem("listArray", JSON.stringify(list));
+  renderList();
+}
+
+clearCompletedButton.addEventListener("click", () => {
+  clearCompleted();
 });
 
 renderList();

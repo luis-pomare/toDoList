@@ -56,7 +56,8 @@ span {
 .fa-ellipsis-vertical,
 .fa-trash-can,
 .fa-pencil,
-.checkbox {
+.checkbox,
+#clearCompleted {
   cursor: pointer;
   padding-left: 7px;
   padding-right: 7px;
