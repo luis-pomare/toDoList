@@ -1,15 +1,16 @@
 import "./style.css";
-
-const list = [];
-let counter = 0;
 let taskInput = document.getElementById("taskInput");
+const enterIcon = document.getElementById("enterIcon");
+const ul = document.getElementById("listContainer");
+
+let list = [];
+let counter = 0;
 
 if (JSON.parse(localStorage.getItem("listArray")) !== null) {
   list = JSON.parse(localStorage.getItem("listArray"));
   counter = list.length;
 }
 
-const ul = document.getElementById("listContainer");
 class Item {
   constructor(description, completed, index) {
     this.description = description;
@@ -18,22 +19,8 @@ class Item {
   }
 }
 
-const item1 = new Item("Init package.JSON", false, 0);
-const item2 = new Item("Install webpack", false, 1);
-const item3 = new Item("Install dependencies", false, 2);
-const item4 = new Item("Configure src files", false, 3);
-
-function addItem(item) {
-  const { index } = item;
-  list[index] = item;
-}
-
-addItem(item1);
-addItem(item2);
-addItem(item3);
-addItem(item4);
-
-function renderList(list) {
+function renderList() {
+  ul.innerHTML = "";
   for (let i = 0; i < list.length; i += 1) {
     const li = document.createElement("li");
     li.innerHTML = `
@@ -65,12 +52,14 @@ function renderList(list) {
   }
 }
 
-// addButton.addEventListener("click", () => {
-//   if (bookInput.value !== "" && authorInput.value !== "") {
-//     newBook();
-//     renderCollection();
-//     clearInputs();
-//   }
-// });
+enterIcon.addEventListener("click", () => {
+  if (taskInput.value !== "") {
+    list[counter] = new Item(taskInput.value, false, counter);
+    localStorage.setItem("listArray", JSON.stringify(list));
+    counter += 1;
+    renderList();
+    clearInput();
+  }
+});
 
-renderList(list);
+renderList();
