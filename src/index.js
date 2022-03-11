@@ -1,14 +1,15 @@
-import "./style.css";
-let taskInput = document.getElementById("taskInput");
-const enterIcon = document.getElementById("enterIcon");
-const ul = document.getElementById("listContainer");
-const clearCompletedButton = document.getElementById("clearCompleted");
+import './style.css';
+
+const taskInput = document.getElementById('taskInput');
+const enterIcon = document.getElementById('enterIcon');
+const ul = document.getElementById('listContainer');
+const clearCompletedButton = document.getElementById('clearCompleted');
 
 let list = [];
 let counter = 0;
 
-if (JSON.parse(localStorage.getItem("listArray")) !== null) {
-  list = JSON.parse(localStorage.getItem("listArray"));
+if (JSON.parse(localStorage.getItem('listArray')) !== null) {
+  list = JSON.parse(localStorage.getItem('listArray'));
   counter = list.length;
 }
 
@@ -21,9 +22,9 @@ class Item {
 }
 
 function renderList() {
-  ul.innerHTML = "";
+  ul.innerHTML = '';
   for (let i = 0; i < list.length; i += 1) {
-    const li = document.createElement("li");
+    const li = document.createElement('li');
     li.innerHTML = `
     <span>
     <input id="check${list[i].index}" type="checkbox" class="checkbox">
@@ -33,56 +34,56 @@ function renderList() {
     <i class="fa-solid fa-ellipsis-vertical" id="menuIcon${list[i].index}"></i>
     </span>
     `;
-    li.classList.add("flexItem");
+    li.classList.add('flexItem');
     ul.appendChild(li);
-    let menuIcon = document.getElementById(`menuIcon${list[i].index}`); // Current menu icon
-    let menuContainer = document.getElementById(
-      `menuContainer${list[i].index}`
+    const menuIcon = document.getElementById(`menuIcon${list[i].index}`); // Current menu icon
+    const menuContainer = document.getElementById(
+      `menuContainer${list[i].index}`,
     );
-    menuIcon.addEventListener("click", () => {
+    menuIcon.addEventListener('click', () => {
       menuContainer.innerHTML = `
       <i id="erase${list[i].index}" class="fa-solid fa-trash-can"></i>
       `;
-      let erase = document.getElementById(`erase${list[i].index}`);
-      erase.addEventListener("click", () => {
+      const erase = document.getElementById(`erase${list[i].index}`);
+      erase.addEventListener('click', () => {
         list = list.filter((item) => item.index !== list[i].index);
         counter = list.length;
         for (let i = 0; i < counter; i += 1) {
           list[i].index = i;
         }
-        localStorage.setItem("listArray", JSON.stringify(list));
+        localStorage.setItem('listArray', JSON.stringify(list));
         renderList();
       });
     });
-    let check = document.getElementById(`check${list[i].index}`);
+    const check = document.getElementById(`check${list[i].index}`);
     check.checked = list[i].completed;
-    check.addEventListener("click", () => {
+    check.addEventListener('click', () => {
       list[list[i].index].completed = check.checked;
-      localStorage.setItem("listArray", JSON.stringify(list));
+      localStorage.setItem('listArray', JSON.stringify(list));
       if (check.checked) {
-        li.classList.add("checked");
+        li.classList.add('checked');
       }
       if (!check.checked) {
-        li.classList.remove("checked");
+        li.classList.remove('checked');
       }
     });
     if (check.checked) {
-      li.classList.add("checked");
+      li.classList.add('checked');
     }
     if (!check.checked) {
-      li.classList.remove("checked");
+      li.classList.remove('checked');
     }
   }
 }
 
 function clearInput() {
-  taskInput.value = "";
+  taskInput.value = '';
 }
 
-enterIcon.addEventListener("click", () => {
-  if (taskInput.value !== "") {
+enterIcon.addEventListener('click', () => {
+  if (taskInput.value !== '') {
     list[counter] = new Item(taskInput.value, false, counter);
-    localStorage.setItem("listArray", JSON.stringify(list));
+    localStorage.setItem('listArray', JSON.stringify(list));
     counter += 1;
     renderList();
     clearInput();
@@ -95,11 +96,11 @@ function clearCompleted() {
   for (let i = 0; i < counter; i += 1) {
     list[i].index = i;
   }
-  localStorage.setItem("listArray", JSON.stringify(list));
+  localStorage.setItem('listArray', JSON.stringify(list));
   renderList();
 }
 
-clearCompletedButton.addEventListener("click", () => {
+clearCompletedButton.addEventListener('click', () => {
   clearCompleted();
 });
 
