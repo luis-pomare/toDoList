@@ -41,14 +41,18 @@ function renderList() {
     );
     menuIcon.addEventListener("click", () => {
       menuContainer.innerHTML = `
-      <i id="drag${list[i].index}" class="fa-solid fa-grip-lines"></i>
       <i id="erase${list[i].index}" class="fa-solid fa-trash-can"></i>
-      <i id="edit${list[i].index}" class="fa-solid fa-pencil"></i>
       `;
-      let drag = document.getElementById(`drag${list[i].index}`);
       let erase = document.getElementById(`erase${list[i].index}`);
-      let edit = document.getElementById(`edit${list[i].index}`);
-      erase.addEventListener("click", () => {});
+      erase.addEventListener("click", () => {
+        list = list.filter((item) => item.index !== list[i].index);
+        counter = list.length;
+        for (let i = 0; i < counter; i += 1) {
+          list[i].index = i;
+        }
+        localStorage.setItem("listArray", JSON.stringify(list));
+        renderList();
+      });
     });
     let check = document.getElementById(`check${list[i].index}`);
     check.checked = list[i].completed;
