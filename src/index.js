@@ -52,6 +52,10 @@ function renderList() {
   }
 }
 
+function clearInput() {
+  taskInput.value = "";
+}
+
 enterIcon.addEventListener("click", () => {
   if (taskInput.value !== "") {
     list[counter] = new Item(taskInput.value, false, counter);
