@@ -55,7 +55,8 @@ span {
 
 .fa-ellipsis-vertical,
 .fa-trash-can,
-.fa-pencil {
+.fa-pencil,
+.checkbox {
   cursor: pointer;
   padding-left: 7px;
   padding-right: 7px;
@@ -75,4 +76,9 @@ span {
   cursor: pointer;
   padding-left: 2%;
   padding-right: 3%;
+}
+
+.checked {
+  text-decoration: line-through;
+  opacity: 0.4;
 }

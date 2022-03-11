@@ -25,7 +25,7 @@ function renderList() {
     const li = document.createElement("li");
     li.innerHTML = `
     <span>
-    <input id="check${list[i].index}" type="checkbox">
+    <input id="check${list[i].index}" type="checkbox" class="checkbox">
     <p contenteditable="true">${list[i].description}</p>
     </span>
     <span id="menuContainer${list[i].index}">
@@ -54,8 +54,19 @@ function renderList() {
     check.addEventListener("click", () => {
       list[list[i].index].completed = check.checked;
       localStorage.setItem("listArray", JSON.stringify(list));
-      console.log(list);
+      if (check.checked) {
+        li.classList.add("checked");
+      }
+      if (!check.checked) {
+        li.classList.remove("checked");
+      }
     });
+    if (check.checked) {
+      li.classList.add("checked");
+    }
+    if (!check.checked) {
+      li.classList.remove("checked");
+    }
   }
 }
 
@@ -74,4 +85,3 @@ enterIcon.addEventListener("click", () => {
 });
 
 renderList();
-console.log(list);
