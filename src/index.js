@@ -23,12 +23,12 @@ function clearInput() {
   taskInput.value = "";
 }
 
-function renderElement() {
+function renderElement(description = taskInput.value) {
   const element = `
       <li class="flexItem">
         <span>
           <input type="checkbox" class="checkbox" />
-          <p contenteditable="true">${taskInput.value}</p>
+          <p>${description}</p>
         </span>
         <span>
           <i class="fa-solid fa-ellipsis-vertical"></i>
@@ -51,3 +51,8 @@ enterIcon.addEventListener("click", () => {
     clearInput();
   }
 });
+
+// First load render
+for (let element of list) {
+  renderElement(element.description);
+}
