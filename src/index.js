@@ -6,15 +6,18 @@ let ul = document.getElementById("listContainer");
 const clearCompletedButton = document.getElementById("clearCompleted");
 
 let list = [];
+let index = 0;
 
 if (JSON.parse(localStorage.getItem("listArray")) !== null) {
   list = JSON.parse(localStorage.getItem("listArray"));
+  index = list.length;
 }
 
 class Item {
-  constructor(description, completed) {
+  constructor(description, completed, index) {
     this.description = description;
     this.completed = completed;
+    this.index = index;
   }
 }
 
@@ -52,7 +55,26 @@ enterIcon.addEventListener("click", () => {
   }
 });
 
-// First load render
-for (let element of list) {
-  renderElement(element.description);
+function renderList() {
+  ul.innerHTML = "";
+  for (let element of list) {
+    renderElement(element.description);
+  }
 }
+
+// Initial rendering
+renderList();
+
+function clearCompleted() {
+  list = list.filter((item) => item.completed === true);
+  index = list.length;
+  for (let i = 0; i < index; i += 1) {
+    list[i].index = i;
+  }
+  localStorage.setItem("listArray", JSON.stringify(list));
+  renderList();
+}
+
+clearCompletedButton.addEventListener("click", () => {
+  clearCompleted();
+});
