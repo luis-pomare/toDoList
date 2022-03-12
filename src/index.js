@@ -42,8 +42,9 @@ function renderElement(description = taskInput.value) {
 }
 
 function storageElement() {
-  const element = new Item(taskInput.value, false);
+  const element = new Item(taskInput.value, false, index);
   list.push(element);
+  index += 1;
   localStorage.setItem("listArray", JSON.stringify(list));
 }
 
@@ -77,4 +78,12 @@ function clearCompleted() {
 
 clearCompletedButton.addEventListener("click", () => {
   clearCompleted();
+});
+
+ul.addEventListener("click", (e) => {
+  if (e.target) {
+    if (e.target.type === "checkbox") {
+      e.target.parentElement.classList.toggle("checked");
+    }
+  }
 });
