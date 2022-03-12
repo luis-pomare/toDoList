@@ -84,6 +84,8 @@ ul.addEventListener("click", (e) => {
   if (e.target) {
     if (e.target.type === "checkbox") {
       e.target.parentElement.classList.toggle("checked");
+      list[e.target.dataset.index].completed = e.target.checked;
+      localStorage.setItem("listArray", JSON.stringify(list));
     }
   }
 });
