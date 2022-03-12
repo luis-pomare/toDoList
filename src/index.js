@@ -2,7 +2,7 @@ import "./style.css";
 
 const taskInput = document.getElementById("taskInput");
 const enterIcon = document.getElementById("enterIcon");
-let ul = document.getElementById("listContainer");
+const ul = document.getElementById("listContainer");
 const clearCompletedButton = document.getElementById("clearCompleted");
 
 let list = [];
@@ -64,8 +64,8 @@ enterIcon.addEventListener("click", () => {
 
 function renderList() {
   ul.innerHTML = "";
-  for (let element of list) {
-    renderElement(element.description, element.index, element.completed);
+  for (let i = 0; i < list.length; i += 1) {
+    renderElement(list[i].description, list[i].index, list[i].completed);
   }
 }
 
@@ -94,7 +94,8 @@ ul.addEventListener("click", (e) => {
       localStorage.setItem("listArray", JSON.stringify(list));
     }
     if (e.target.tagName === "I") {
-      list = list.filter((item) => item.index != e.target.dataset.index);
+      let numericIndex = Number(e.target.dataset.index);
+      list = list.filter((item) => item.index !== numericIndex);
       index = list.length;
       for (let i = 0; i < index; i += 1) {
         list[i].index = i;
