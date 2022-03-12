@@ -94,11 +94,16 @@ ul.addEventListener("click", (e) => {
       localStorage.setItem("listArray", JSON.stringify(list));
     }
     if (e.target.tagName === "I") {
-      console.log(list);
       list = list.filter((item) => item.index != e.target.dataset.index);
-      console.log(list);
+      index = list.length;
+      for (let i = 0; i < index; i += 1) {
+        list[i].index = i;
+      }
       localStorage.setItem("listArray", JSON.stringify(list));
       renderList();
+    }
+    if (e.target.tagName === "P") {
+      console.log(e.target.dataset.index);
     }
   }
 });
