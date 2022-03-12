@@ -26,11 +26,11 @@ function clearInput() {
   taskInput.value = "";
 }
 
-function renderElement(description = taskInput.value) {
+function renderElement(description = taskInput.value, index) {
   const element = `
       <li class="flexItem">
         <span>
-          <input type="checkbox" class="checkbox" />
+          <input type="checkbox" class="checkbox" data-index=${index}>
           <p>${description}</p>
         </span>
         <span>
@@ -50,7 +50,7 @@ function storageElement() {
 
 enterIcon.addEventListener("click", () => {
   if (taskInput.value !== "") {
-    renderElement();
+    renderElement(taskInput.value, index);
     storageElement();
     clearInput();
   }
@@ -59,7 +59,7 @@ enterIcon.addEventListener("click", () => {
 function renderList() {
   ul.innerHTML = "";
   for (let element of list) {
-    renderElement(element.description);
+    renderElement(element.description, element.index);
   }
 }
 
