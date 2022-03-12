@@ -37,7 +37,7 @@ function renderElement(description, index, checked) {
       <li class="flexItem">
         <span class="${checkedClass}">
           <input type="checkbox" class="checkbox" data-index=${index} ${isChecked}>
-          <p>${description}</p>
+          <p data-index=${index}>${description}</p>
         </span>
         <span>
         <i class="fa-solid fa-trash-can" data-index=${index}></i>
@@ -47,7 +47,7 @@ function renderElement(description, index, checked) {
   ul.innerHTML += element;
 }
 
-function storageElement() {
+function storageNewElement() {
   const element = new Item(taskInput.value, false, index);
   list.push(element);
   index += 1;
@@ -57,7 +57,7 @@ function storageElement() {
 enterIcon.addEventListener("click", () => {
   if (taskInput.value !== "") {
     renderElement(taskInput.value, index, false);
-    storageElement();
+    storageNewElement();
     clearInput();
   }
 });
@@ -103,7 +103,15 @@ ul.addEventListener("click", (e) => {
       renderList();
     }
     if (e.target.tagName === "P") {
-      console.log(e.target.dataset.index);
+      e.target.innerHTML = `<input type=text data-index=${e.target.dataset.index} >`;
     }
+  }
+});
+
+ul.addEventListener("change", (e) => {
+  if (e.target.type === "text") {
+    e.target.parentElement.innerHTML = `<p>${e.target.value}</p>`;
+    list[e.target.dataset.index].description = e.target.value;
+    localStorage.setItem("listArray", JSON.stringify(list));
   }
 });
