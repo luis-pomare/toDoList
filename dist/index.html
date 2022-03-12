@@ -3,15 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/7c4b767795.js"
+      crossorigin="anonymous"
+    ></script>
     <title>To do list</title>
   <script defer src="main.js"></script></head>
   <body>
     <main>
       <p class="flexItem">Today's to do</p>
-      <input type="text" placeholder="Add to your list" class="flexItem" />
-      <ul id="listContainer" class="flexItem"></ul>
-      <p id="clearCompleted" class="flexItem">Clear all completed</p>
-      <input type="checkbox" id="che" />
+      <span id="inputContainer" class="flexItem">
+        <input id="taskInput" type="text" placeholder="Add to your list" />
+        <i id="enterIcon" class="fa-solid fa-check"></i>
+      </span>
+      <ul id="listContainer"></ul>
+      <p id="clearCompleted">Clear all completed</p>
     </main>
   </body>
 </html>
