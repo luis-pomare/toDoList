@@ -1,9 +1,6 @@
 import './style.css';
-
-const taskInput = document.getElementById('taskInput');
-const enterIcon = document.getElementById('enterIcon');
-const ul = document.getElementById('listContainer');
-const clearCompletedButton = document.getElementById('clearCompleted');
+import domObject from './modules/readDom.js';
+import renderElement from './modules/itemFunctions.js';
 
 let list = [];
 let index = 0;
@@ -23,47 +20,26 @@ class Item {
 
 // To clear the input field each time the enter button is clicked
 function clearInput() {
-  taskInput.value = '';
-}
-
-function renderElement(description, index, checked) {
-  let isChecked = '';
-  let checkedClass = '';
-  if (checked === true) {
-    isChecked = 'checked=true';
-    checkedClass = 'checked';
-  }
-  const element = `
-      <li class="flexItem">
-        <span class="${checkedClass}">
-          <input type="checkbox" class="checkbox" data-index=${index} ${isChecked}>
-          <p data-index=${index}>${description}</p>
-        </span>
-        <span>
-        <i class="fa-solid fa-trash-can" data-index=${index}></i>
-        </span>
-      </li>      
-    `;
-  ul.innerHTML += element;
+  domObject.taskInput.value = '';
 }
 
 function storageNewElement() {
-  const element = new Item(taskInput.value, false, index);
+  const element = new Item(domObject.taskInput.value, false, index);
   list.push(element);
   index += 1;
   localStorage.setItem('listArray', JSON.stringify(list));
 }
 
-enterIcon.addEventListener('click', () => {
-  if (taskInput.value !== '') {
-    renderElement(taskInput.value, index, false);
+domObject.enterIcon.addEventListener('click', () => {
+  if (domObject.taskInput.value !== '') {
+    renderElement(domObject.taskInput.value, index, false);
     storageNewElement();
     clearInput();
   }
 });
 
 function renderList() {
-  ul.innerHTML = '';
+  domObject.ul.innerHTML = '';
   for (let i = 0; i < list.length; i += 1) {
     renderElement(list[i].description, list[i].index, list[i].completed);
   }
@@ -82,11 +58,11 @@ function clearCompleted() {
   renderList();
 }
 
-clearCompletedButton.addEventListener('click', () => {
+domObject.clearCompletedButton.addEventListener('click', () => {
   clearCompleted();
 });
 
-ul.addEventListener('click', (e) => {
+domObject.ul.addEventListener('click', (e) => {
   if (e.target) {
     if (e.target.type === 'checkbox') {
       e.target.parentElement.classList.toggle('checked');
@@ -109,7 +85,7 @@ ul.addEventListener('click', (e) => {
   }
 });
 
-ul.addEventListener('change', (e) => {
+domObject.ul.addEventListener('change', (e) => {
   if (e.target.type === 'text') {
     e.target.parentElement.innerHTML = `<p>${e.target.value}</p>`;
     list[e.target.dataset.index].description = e.target.value;
