@@ -26,15 +26,21 @@ function clearInput() {
   taskInput.value = "";
 }
 
-function renderElement(description = taskInput.value, index) {
+function renderElement(description, index, checked) {
+  let isChecked = "";
+  let checkedClass = "";
+  if (checked === true) {
+    isChecked = "checked=true";
+    checkedClass = "checked";
+  }
   const element = `
       <li class="flexItem">
-        <span>
-          <input type="checkbox" class="checkbox" data-index=${index}>
+        <span class="${checkedClass}">
+          <input type="checkbox" class="checkbox" data-index=${index} ${isChecked}>
           <p>${description}</p>
         </span>
         <span>
-          <i class="fa-solid fa-ellipsis-vertical"></i>
+        <i class="fa-solid fa-trash-can" data-index=${index}></i>
         </span>
       </li>      
     `;
@@ -50,7 +56,7 @@ function storageElement() {
 
 enterIcon.addEventListener("click", () => {
   if (taskInput.value !== "") {
-    renderElement(taskInput.value, index);
+    renderElement(taskInput.value, index, false);
     storageElement();
     clearInput();
   }
@@ -59,7 +65,7 @@ enterIcon.addEventListener("click", () => {
 function renderList() {
   ul.innerHTML = "";
   for (let element of list) {
-    renderElement(element.description, element.index);
+    renderElement(element.description, element.index, element.completed);
   }
 }
 
@@ -86,6 +92,13 @@ ul.addEventListener("click", (e) => {
       e.target.parentElement.classList.toggle("checked");
       list[e.target.dataset.index].completed = e.target.checked;
       localStorage.setItem("listArray", JSON.stringify(list));
+    }
+    if (e.target.tagName === "I") {
+      console.log(list);
+      list = list.filter((item) => item.index != e.target.dataset.index);
+      console.log(list);
+      localStorage.setItem("listArray", JSON.stringify(list));
+      renderList();
     }
   }
 });
