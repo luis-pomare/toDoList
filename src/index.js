@@ -67,7 +67,7 @@ function renderList() {
 renderList();
 
 function clearCompleted() {
-  list = list.filter((item) => item.completed === true);
+  list = list.filter((item) => item.completed === false);
   index = list.length;
   for (let i = 0; i < index; i += 1) {
     list[i].index = i;
