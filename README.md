@@ -11,9 +11,9 @@
 
 ## Live Demo
 
-[Live Demo Link](https://luis-pomare.github.io/toDoList/)
+[Live Demo Link](https://luis-pomare.github.io/toDoList/dist)
 
-[<img src="app_screenshot.png">](https://luis-pomare.github.io/toDoList/)
+[<img src="app_screenshot.png">](https://luis-pomare.github.io/toDoList/dist)
 
 ## Getting Started
 
