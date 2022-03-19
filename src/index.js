@@ -1,6 +1,7 @@
 import "./style.css";
 import domObject from "./modules/readDom.js";
 import renderElement from "./modules/itemFunctions.js";
+import { functions } from "lodash";
 
 let list = [];
 let index = 0;
@@ -97,4 +98,9 @@ domObject.ul.addEventListener("change", (e) => {
   }
 });
 
-module.exports = storageNewElement;
+const functionsTesting = {
+  storageNewElement,
+  renderElement,
+};
+
+module.exports = functionsTesting;
