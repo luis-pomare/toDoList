@@ -31,6 +31,7 @@ function storageNewElement() {
   list.push(element);
   index += 1;
   updateLocal();
+  return element;
 }
 
 domObject.enterIcon.addEventListener("click", () => {
@@ -95,3 +96,5 @@ domObject.ul.addEventListener("change", (e) => {
     updateLocal();
   }
 });
+
+module.exports = storageNewElement;
