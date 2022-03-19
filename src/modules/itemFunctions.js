@@ -1,11 +1,11 @@
-import domObject from "./readDom.js";
+import domObject from './readDom.js';
 
 const renderElement = function (description, index, checked) {
-  let isChecked = "";
-  let checkedClass = "";
+  let isChecked = '';
+  let checkedClass = '';
   if (checked === true) {
-    isChecked = "checked=true";
-    checkedClass = "checked";
+    isChecked = 'checked=true';
+    checkedClass = 'checked';
   }
   const element = `
         <li class="flexItem">
